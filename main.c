@@ -91,7 +91,6 @@ void main() {
     };
 
     int isPaused = false;
-//---------------------------------------------------------------------------//
 
     List* pCirclesList = ListCreate();
     AddCircle(pCirclesList, GRAY, 1, 0, 0);
@@ -116,7 +115,7 @@ void main() {
         DrawCircles(pCirclesList, GUIZoomExp);
 
 //-----------------------------------GUI-------------------------------------//
-        //Radius & Pause Text
+        //Radius & Pause
         GUIRadius = GuiSlider((Rectangle) { 100, 10, 100, 15 }, "Radius  ", GUIRadiusText, GUIRadius, 0, 10);
         if (GUIRadius < 1) GUIRadius = 1.f;
         GuiSlider((Rectangle) { 1200, 10, 100, 15 }, "Press [SPACE] to pause. ", "", 0, 0, 1);
