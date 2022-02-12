@@ -118,9 +118,8 @@ void main() {
         //Radius & Pause
         GUIRadius = GuiSlider((Rectangle) { 100, 10, 100, 15 }, "Radius  ", GUIRadiusText, GUIRadius, 0, 10);
         if (GUIRadius < 1) GUIRadius = 1.f;
-        GuiSlider((Rectangle) { 1200, 10, 100, 15 }, "Press [SPACE] to pause. ", "", 0, 0, 1);
+        GuiSlider((Rectangle) { 1200, 10, 100, 15 }, "Press [SPACE] to pause.  ", "", 0, 0, 1);
         snprintf(GUIRadiusText, 64, "%.1f", GUIRadius);
-        printf("came");
 
         //RodLength
         GUIRodLength = GuiSlider((Rectangle) { 100, 30, 100, 15 }, "Rod Legth  ", GUIRodLengthText, GUIRodLength , 0, 20);
