@@ -73,14 +73,14 @@ void main() {
     ftime(&startT);
 
     float GUIZoomExp = 1.f;
-    const char* GUIZoomExpText = "1.0    ";
+    const char* GUIZoomExpText[128];
 
     float GUIRadius = 1.f;
-    const char* GUIRadiusText = "1.0    ";
+    const char* GUIRadiusText[128];
     float GUIRodLength = 2.f;
-    const char* GUIRodLengthText = "2.0    ";
+    const char* GUIRodLengthText[128];
     int GUIW = 0;
-    const char* GUIWText = "0      ";
+    const char* GUIWText[128];
     int GUIColor = 0;
     Color colorList[5] = {
         RED,
@@ -119,17 +119,18 @@ void main() {
         GUIRadius = GuiSlider((Rectangle) { 100, 10, 100, 15 }, "Radius  ", GUIRadiusText, GUIRadius, 0, 10);
         if (GUIRadius < 1) GUIRadius = 1.f;
         GuiSlider((Rectangle) { 1200, 10, 100, 15 }, "Press [SPACE] to pause. ", "", 0, 0, 1);
-        sprintf(GUIRadiusText, "%.1f", GUIRadius);
+        snprintf(GUIRadiusText, 64, "%.1f", GUIRadius);
+        printf("came");
 
         //RodLength
         GUIRodLength = GuiSlider((Rectangle) { 100, 30, 100, 15 }, "Rod Legth  ", GUIRodLengthText, GUIRodLength , 0, 20);
         if (GUIRodLength < pCirclesList->pTail->pData->radius + GUIRadius) GUIRodLength = pCirclesList->pTail->pData->radius + GUIRadius;
         if (GUIRodLength < 2) GUIRodLength = 2.f;
-        sprintf(GUIRodLengthText, "%.1f", GUIRodLength);  
+        snprintf(GUIRodLengthText, 64, "%.1f", GUIRodLength);  
 
         //W
         GUIW = (int)round(GuiSlider((Rectangle) { 100, 50, 100, 15 }, "Angular Speed  ", GUIWText, GUIW, -360, 360));
-        sprintf(GUIWText, "%d", GUIW);
+        snprintf(GUIWText, 64, "%d", GUIW);
 
         //Color
         DrawRectangle(98, 68, 19, 19, RED);
@@ -167,7 +168,7 @@ void main() {
         //Zoom
         GUIZoomExp += (GetMouseWheelMove() * .1f);
         GUIZoomExp = GuiSlider((Rectangle) { 100, HEIGHT - 25, 100, 15 }, "Zoom Multiplier  ", GUIZoomExpText, GUIZoomExp, 1, 5);
-        sprintf(GUIZoomExpText, "%.1f", GUIZoomExp);
+        snprintf(GUIZoomExpText, 64, "%.1f", GUIZoomExp);
 
         //Pausing
         if(IsKeyPressed(KEY_SPACE)) {
