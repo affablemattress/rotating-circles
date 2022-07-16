@@ -116,43 +116,43 @@ void main() {
 
 //-----------------------------------GUI-------------------------------------//
         //Radius & Pause
-        GUIRadius = GuiSlider((Rectangle) { 100, 10, 100, 15 }, "Radius  ", GUIRadiusText, GUIRadius, 0, 10);
+        GUIRadius = GuiSlider((Rectangle) { 100, 10, 110, 15 }, "Radius  ", GUIRadiusText, GUIRadius, 0, 10);
         if (GUIRadius < 1) GUIRadius = 1.f;
-        GuiSlider((Rectangle) { 1200, 10, 100, 15 }, "Press [SPACE] to pause.  ", "", 0, 0, 1);
+        GuiSlider((Rectangle) { 1200, 10, 110, 15 }, "Press [SPACE] to pause.  ", "", 0, 0, 1);
         snprintf(GUIRadiusText, 64, "%.1f", GUIRadius);
 
         //RodLength
-        GUIRodLength = GuiSlider((Rectangle) { 100, 30, 100, 15 }, "Rod Legth  ", GUIRodLengthText, GUIRodLength , 0, 20);
+        GUIRodLength = GuiSlider((Rectangle) { 100, 30, 110, 15 }, "Rod Length  ", GUIRodLengthText, GUIRodLength , 0, 20);
         if (GUIRodLength < pCirclesList->pTail->pData->radius + GUIRadius) GUIRodLength = pCirclesList->pTail->pData->radius + GUIRadius;
         if (GUIRodLength < 2) GUIRodLength = 2.f;
         snprintf(GUIRodLengthText, 64, "%.1f", GUIRodLength);  
 
         //W
-        GUIW = (int)round(GuiSlider((Rectangle) { 100, 50, 100, 15 }, "Angular Speed  ", GUIWText, GUIW, -360, 360));
+        GUIW = (int)round(GuiSlider((Rectangle) { 100, 50, 110, 15 }, "Angular Speed  ", GUIWText, GUIW, -360, 360));
         snprintf(GUIWText, 64, "%d", GUIW);
 
         //Color
-        DrawRectangle(98, 68, 19, 19, RED);
-        DrawRectangle(101, 71, 13, 13, WHITE);
-        if(GuiCheckBox((Rectangle) { 100, 70, 15, 15 }, NULL, GUIColor == 0)) GUIColor = 0;
-        DrawRectangle(119, 68, 19, 19, BLUE);
-        DrawRectangle(122, 71, 13, 13, WHITE);
-        if(GuiCheckBox((Rectangle) { 121, 70, 15, 15 }, NULL, GUIColor == 1)) GUIColor = 1;
-        DrawRectangle(140, 68, 19, 19, GREEN);
-        DrawRectangle(143, 71, 13, 13, WHITE);
-        if(GuiCheckBox((Rectangle) { 142, 70, 15, 15 }, NULL, GUIColor == 2)) GUIColor = 2;
-        DrawRectangle(162, 68, 19, 19, ORANGE);
-        DrawRectangle(165, 71, 13, 13, WHITE);
-        if(GuiCheckBox((Rectangle) { 164, 70, 15, 15 }, NULL, GUIColor == 3)) GUIColor = 3;
-        DrawRectangle(183, 68, 19, 19, PURPLE);
-        DrawRectangle(186, 71, 13, 13, WHITE);
-        if(GuiCheckBox((Rectangle) { 185, 70, 15, 15 }, NULL, GUIColor == 4)) GUIColor = 4;
+        DrawRectangle(100, 68, 19, 19, RED);
+        DrawRectangle(103, 71, 13, 13, WHITE);
+        if(GuiCheckBox((Rectangle) { 102, 70, 15, 15 }, NULL, GUIColor == 0)) GUIColor = 0;
+        DrawRectangle(123, 68, 19, 19, BLUE);
+        DrawRectangle(126, 71, 13, 13, WHITE);
+        if(GuiCheckBox((Rectangle) { 125, 70, 15, 15 }, NULL, GUIColor == 1)) GUIColor = 1;
+        DrawRectangle(146, 68, 19, 19, GREEN);
+        DrawRectangle(149, 71, 13, 13, WHITE);
+        if(GuiCheckBox((Rectangle) { 148, 70, 15, 15 }, NULL, GUIColor == 2)) GUIColor = 2;
+        DrawRectangle(168, 68, 19, 19, ORANGE);
+        DrawRectangle(171, 71, 13, 13, WHITE);
+        if(GuiCheckBox((Rectangle) { 170, 70, 15, 15 }, NULL, GUIColor == 3)) GUIColor = 3;
+        DrawRectangle(191, 68, 19, 19, PURPLE);
+        DrawRectangle(194, 71, 13, 13, WHITE);
+        if(GuiCheckBox((Rectangle) { 193, 70, 15, 15 }, NULL, GUIColor == 4)) GUIColor = 4;
 
         //Buttons
-        if (GuiButton((Rectangle) { 100, 90, 100, 15 }, "Add Circle")) {
+        if (GuiButton((Rectangle) { 100, 90, 110, 15 }, "Add Circle")) {
             AddCircle(pCirclesList, colorList[GUIColor], GUIRadius, GUIRodLength, GUIW);
         }
-        if (GuiButton((Rectangle) { 100, 110, 100, 15 }, "Add Rnd. Circle")) {
+        if (GuiButton((Rectangle) { 100, 130, 110, 15 }, "Add Rnd. Circle")) {
             GUIColor = rand() % 5;
             GUIRadius = (rand() % 91 + 10) / 10.f;
             int minRodLength = (int)((pCirclesList->pTail->pData->radius + GUIRadius) * 10);
@@ -160,13 +160,28 @@ void main() {
             GUIW = rand() % 721 - 360;
             AddCircle(pCirclesList, colorList[GUIColor], GUIRadius, GUIRodLength, GUIW);
         }
-        if (GuiButton((Rectangle) { 100, 130, 100, 15 }, "Remove Circle")) {
+        if (GuiButton((Rectangle) { 100, 150, 110, 15 }, "Add 10 Rnd. Circles")) {
+            for (int i = 0; i < 10; i++) {
+                GUIColor = rand() % 5;
+                GUIRadius = (rand() % 91 + 10) / 10.f;
+                int minRodLength = (int)((pCirclesList->pTail->pData->radius + GUIRadius) * 10);
+                GUIRodLength = (rand() % (200 - minRodLength + 1) + minRodLength) / 10.f;
+                GUIW = rand() % 721 - 360;
+                AddCircle(pCirclesList, colorList[GUIColor], GUIRadius, GUIRodLength, GUIW);
+            }
+        }
+        if (GuiButton((Rectangle) { 100, 190, 110, 15 }, "Remove Circle")) {
             RemoveCircle(pCirclesList);
+        }
+        if (GuiButton((Rectangle) { 100, 190, 110, 15 }, "Remove 10 Circles")) {
+            for (int i = 0; i < 10; i++) {
+                RemoveCircle(pCirclesList);
+            }
         }
 
         //Zoom
         GUIZoomExp += (GetMouseWheelMove() * .1f);
-        GUIZoomExp = GuiSlider((Rectangle) { 100, HEIGHT - 25, 100, 15 }, "Zoom Multiplier  ", GUIZoomExpText, GUIZoomExp, 1, 5);
+        GUIZoomExp = GuiSlider((Rectangle) { 100, HEIGHT - 25, 110, 15 }, "Zoom Multiplier  ", GUIZoomExpText, GUIZoomExp, 0.1, 5);
         snprintf(GUIZoomExpText, 64, "%.1f", GUIZoomExp);
 
         //Pausing
