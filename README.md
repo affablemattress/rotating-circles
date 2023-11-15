@@ -1,6 +1,6 @@
 # Sample Solution for the Exemption Project
 
-The solution presented in this repository is to be used only as an example. The code quality and workflow is NOT optimal but the  
+The solution presented in this repository is to be used only as an example. The code quality and workflow is NOT optimal but the 
 end product satisfies the project requirements. You can use the code here as a reference point or as a MVP example.  
 
 ***
