@@ -3,7 +3,7 @@
 The solution presented in this repository is to be used only as an example. The code quality and structure is NOT optimal but the 
 end product satisfies the project requirements. You can use the code here as a reference point or as a MVP example.  
 
-By the way, this is my actual solution to the task, which I've used to be exempt from the course. So, this is the first meaningful
+By the way, this is my actual solution to the task, which I've used to be exempt from the course 2 years ago. So, this is the first meaningful
 program that I've written in C :)
 
 ***
